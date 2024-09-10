@@ -1,61 +1,48 @@
-// src/App.js
-import React, { useContext } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-
-// Components & Pages
-import Navbar from './components/Navbar';
-import Dashboard from './pages/Dashboard';
-import Profile from './pages/Profile';
-import Feed from './pages/Feed';
-import Connections from './pages/Connections';
-import JobMatching from './pages/JobMatching';
-import Messages from './pages/Messages';
-import Notifications from './pages/Notifications';
-import Settings from './pages/Settings';
-import HelpCenter from './pages/HelpCenter';
-import UserLogin from './pages/Authentication/UserLogin';
-import AdminLogin from './pages/Authentication/AdminLogin';
-import Register from './pages/Authentication/Register';
-import AdminDashboard from './pages/AdminDashboard';
-
-// Auth Context
-import { AuthContext } from './contexts/AuthContext';
+// App.js
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import { Signin } from "./components/Signin";
+import { Signup } from "./components/Signup";
+import { ThemeProvider } from "./ThemeContext";
+// import { Dashboard } from "./components/Dashboard.js";
+// import { Sellpost } from "./components/Sellpost.js";
+// import { Userprofile } from "./components/Userprofile.js";
+import { Waitingarea } from "./components/Waitingarea.js";
+// import { Landpage } from "./components/Landpage.js";
+// import { ThemeProvider } from "./ThemeContext";
+// import { Fullpost } from "./components/Fullpost.js";
+// import { Requestedposts } from "./components/Requestedposts.js";
+// import { Payment } from "./components/Payment.js";
+// import { Footer } from "./components/Footer.js";
+// import { Forgot } from "./components/Forgot.js";
+// import { Testing } from "./components/Testing.js";
+// import { Setprofile } from "./components/Setprofile.js";
+// import { Setrole } from "./components/Setrole.js";
+// import { Buyerhome } from "./components/Buyerhome.js";
 
 const App = () => {
-  const { isAuthenticated } = useContext(AuthContext);
-
   return (
-    <Router>
-      <Navbar />
+    <ThemeProvider>
       <Routes>
-        {/* Public Routes */}
-        <Route path="/login" element={!isAuthenticated ? <UserLogin /> : <Navigate to="/dashboard" />} />
-        <Route path="/admin-login" element={!isAuthenticated ? <AdminLogin /> : <Navigate to="/admin-dashboard" />} />
-        <Route path="/register" element={!isAuthenticated ? <Register /> : <Navigate to="/dashboard" />} />
+        {/* <Route path="/" element={<Landpage />} /> */}
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/mail-confirm" element={<Waitingarea />} />
+        {/* <Route path="/setprofile" element={<Setprofile />} /> */}
+        {/* <Route path="/set-data" element={<Setrole />} />
 
-        {/* Private Routes for authenticated users */}
-        {isAuthenticated && (
-          <>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/feed" element={<Feed />} />
-            <Route path="/job-matching" element={<JobMatching />} />
-            <Route path="/connections" element={<Connections />} />
-            <Route path="/notifications" element={<Notifications />} />
-            <Route path="/messages" element={<Messages />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/help-center" element={<HelpCenter />} />
-
-            {/* Admin Route */}
-            <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          </>
-        )}
-
-        {/* Redirect unauthenticated users */}
-        <Route path="/" element={<Navigate to={isAuthenticated ? "/dashboard" : "/login"} />} />
+      
+        <Route path="/change/password" element={<Forgot />} />
+        <Route path="/user/dashboard" element={<Dashboard />} />
+        <Route path="/user/buyerdashboard" element={<Buyerhome />} />
+        <Route path="/post_view" element={<Fullpost />} />
+        <Route path="/user/profile" element={<Userprofile />} />
+        <Route path="/user/sell-post" element={<Sellpost />} />
+        <Route path="/requested" element={<Requestedposts />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/foot" element={<Testing />} /> */}
       </Routes>
-    </Router>
+    </ThemeProvider>
   );
 };
-
 export default App;

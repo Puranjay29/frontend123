@@ -12,12 +12,12 @@ export const Navbar = (props) => {
   const [confirm, setconfirm] = useState(1);
   const navigate = useNavigate();
   useEffect(() => {
-    setconfirm(props.confirm);
+    setconfirm(props.confirm); 
     console.log(props.confirm);
     const user_details = async () => {
       try {
         const response1 = await axios.post(
-          "https://ezsell-backend.vercel.app/user",
+          "http://localhost:8000/user",
           {},
           {
             withCredentials: true,
@@ -60,7 +60,7 @@ export const Navbar = (props) => {
   const userlogout = async () => {
     try {
       const response2 = await axios.post(
-        "https://ezsell-backend.vercel.app/user/logout",
+        "http://localhost:8000/user/logout",
         {},
         {
           withCredentials: true,
@@ -88,7 +88,7 @@ export const Navbar = (props) => {
                 className="navbar-brand ms-2"
                 to="https://ezsell-sg.vercel.app"
               >
-                ezSell
+                Academia
               </Link>
               <button
                 className="navbar-toggler me-3"
@@ -225,7 +225,7 @@ export const Navbar = (props) => {
             </nav>
           </>
         )}
-        {(confirm === 0 ||
+        {(confirm === 0 || 
           props.confirm === 0 ||
           props.confirm === 4 ||
           props.confirm === 5) && (
@@ -235,7 +235,7 @@ export const Navbar = (props) => {
                 className="navbar-brand text-light  fw-bold ms-2"
                 to="https://ezsell-sg.vercel.app"
               >
-                ezSell
+                Academia
               </Link>
 
               <Link className=" navbar-brand text-light   ms-2" to="/signup">

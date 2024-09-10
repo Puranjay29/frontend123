@@ -14,7 +14,7 @@ export const Signin = () => {
     const user_details = async () => {
       try {
         const response1 = await axios.post(
-          "https://ezsell-backend.vercel.app/user",
+          "http://localhost:8000/user",
           {},
           {
             withCredentials: true,
@@ -35,7 +35,7 @@ export const Signin = () => {
     event.preventDefault();
     try {
       const response1 = await axios.post(
-        "https://ezsell-backend.vercel.app/log/sign-in",
+        "http://localhost:8000/log/sign-in",
         {
           EMAIL,
           PASSWORD,
@@ -60,10 +60,7 @@ export const Signin = () => {
     }
   };
   const loginwithgoogle = () => {
-    window.open(
-      "https://ezsell-backend.vercel.app/auth/google?signup=noo",
-      "_self"
-    );
+    window.open("http://localhost:8000/auth/google?signup=noo", "_self");
   };
 
   return (
